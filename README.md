@@ -1,4 +1,4 @@
-# Receitas
+# Receitass
 
 ## Comandos que ajudam
 
