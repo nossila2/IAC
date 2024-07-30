@@ -3,7 +3,7 @@
 ## Comandos que ajudam
 
 ```shell
-# cria arquivooo de configuração
+# cria arquivo de configuração
 ansible-config init --disable > ansible.cfg
 
 # executa modulo ping
