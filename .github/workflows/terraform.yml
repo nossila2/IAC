@@ -8,7 +8,7 @@ on:
 jobs:
   # Build Job
   build:
-    runs-on: ubuntu-s-1vcpu-512mb-10gb-nyc1-01
+    runs-on: default-self-hosted
     steps:
       - name: Build Project
         run: |
