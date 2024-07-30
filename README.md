@@ -1,6 +1,6 @@
 # Receitas
 
-## Comandos que ajudamm
+## Comandos que ajudam
 
 ```shell
 # cria arquivo de configuração
