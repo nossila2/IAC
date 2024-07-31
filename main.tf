@@ -27,16 +27,16 @@ resource "azurerm_subnet" "subnet" {
 resource "azurerm_public_ip" "myPubIP" {
    count               = var.number_resources
    name                = "student-pip-${count.index + 1}"
-   location            = azurerm_resource_group.rg.location
-   resource_group_name = azurerm_resource_group.rg.name
+   location            = azurerm_resource_group.student-rg.location
+   resource_group_name = azurerm_resource_group.student-rg.name
    allocation_method   = "Dynamic"
 }
 
 # Cria SG e uma regra de SSH
 resource "azurerm_network_security_group" "nsg" {
   name                = "myNetworkSecurityGroup"
-  location            = azurerm_resource_group.rg.location
-  resource_group_name = azurerm_resource_group.rg.name
+  location            = azurerm_resource_group.student-rg.location
+  resource_group_name = azurerm_resource_group.student-rg.name
 
   security_rule {
     name                       = "SSH"
@@ -66,8 +66,8 @@ resource "azurerm_network_security_group" "nsg" {
 
 resource "azurerm_network_security_group" "my_nsg" {
   name                = "student-nsg"
-  location            = azurerm_resource_group.rg.location
-  resource_group_name = azurerm_resource_group.rg.name
+  location            = azurerm_resource_group.student-rg.location
+  resource_group_name = azurerm_resource_group.student-rg.name
 
   
 }
@@ -75,8 +75,8 @@ resource "azurerm_network_security_group" "my_nsg" {
 resource "azurerm_network_interface" "nic" {
   count               = var.number_resources
   name                = "student-nic-${count.index + 1}"
-  location            = azurerm_resource_group.rg.location
-  resource_group_name = azurerm_resource_group.rg.name
+  location            = azurerm_resource_group.student-rg.location
+  resource_group_name = azurerm_resource_group.student-rg.name
 
   ip_configuration {
     name                          = "nic_${count.index + 1}_configuration"
