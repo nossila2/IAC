@@ -2,15 +2,15 @@ resource "random_pet" "rg_name" {
   prefix = var.resource_group_name_prefix
 }
 
-resource "azurerm_resource_group" "rg" {
+resource "azurerm_resource_group" "student-rg" {
   location = var.resource_group_location
   name     = random_pet.rg_name.id
 }
 
 # Cria rede vritual
 resource "azurerm_virtual_network" "vnet" {
-  name                = "aula-vnet"
-  address_space       = ["10.0.0.0/16"]
+  name                = "student-vnet"
+  address_space       = ["10.0.1.0/24"]
   location            = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name
 }
@@ -26,7 +26,7 @@ resource "azurerm_subnet" "subnet" {
 # Cria IPs publicos
 resource "azurerm_public_ip" "myPubIP" {
    count               = var.number_resources
-   name                = "myPublicIP-${count.index + 1}"
+   name                = "student-pip-${count.index + 1}"
    location            = azurerm_resource_group.rg.location
    resource_group_name = azurerm_resource_group.rg.name
    allocation_method   = "Dynamic"
@@ -65,7 +65,7 @@ resource "azurerm_network_security_group" "nsg" {
 }
 
 resource "azurerm_network_security_group" "my_nsg" {
-  name                = "myNSG"
+  name                = "student-nsg"
   location            = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name
 
@@ -74,7 +74,7 @@ resource "azurerm_network_security_group" "my_nsg" {
 # Cria NIC
 resource "azurerm_network_interface" "nic" {
   count               = var.number_resources
-  name                = "myNIC-${count.index + 1}"
+  name                = "student-nic-${count.index + 1}"
   location            = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name
 
@@ -127,11 +127,11 @@ resource "local_file" "private_key" {
 # Cria a maquina virtual
 resource "azurerm_linux_virtual_machine" "myVM" {
   count                 = var.number_resources
-  name                  = "myVM-${count.index + 1}"
+  name                  = "student-vm-${count.index + 1}"
   location              = azurerm_resource_group.rg.location
   resource_group_name   = azurerm_resource_group.rg.name
   network_interface_ids = [azurerm_network_interface.nic[count.index].id]
-  size                  = "Standard_DS1_v2"
+  size                  = "Standard_B1s"
 
   os_disk {
     name                 = "myOsDisk${count.index + 1}"
