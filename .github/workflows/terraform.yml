@@ -4,15 +4,16 @@ on:
   push:
     branches:
       - main
-
+      
 jobs:
   # Build Job
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Build Project
+      - name: Teste
         run: |
           hostname
+          
       - name: checkout codigo
         uses: actions/checkout@v4
         
@@ -41,14 +42,15 @@ jobs:
           ARM_CLIENT_SECRET: ${{ secrets.ARM_CLIENT_SECRET }}
           ARM_TENAD_ID: ${{ secrets.ARM_TENAD_ID }}
 
-      - name: Executa
-        run: terraform applyl
-
       - name: Run playbook
         uses: dawidd6/action-ansible-playbook@v2
         with:
           # Required, playbook filepath
           playbook: playbook.yml
+
+      - name: Executa
+        run: ansible --version
+    
 
         
 
