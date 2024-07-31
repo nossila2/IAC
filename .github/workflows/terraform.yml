@@ -41,6 +41,9 @@ jobs:
           ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID }}
           ARM_CLIENT_SECRET: ${{ secrets.ARM_CLIENT_SECRET }}
           ARM_TENAD_ID: ${{ secrets.ARM_TENAD_ID }}
+      
+      - name: Apply terraform
+        run: terraform apply
 
       - name: Run playbook
         uses: dawidd6/action-ansible-playbook@v2
