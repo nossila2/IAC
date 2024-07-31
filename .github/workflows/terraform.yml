@@ -44,8 +44,11 @@ jobs:
       - name: Executa
         run: date
 
-      - name: instala ansible
+      - name: Run playbook
         uses: dawidd6/action-ansible-playbook@v2
+        with:
+          # Required, playbook filepath
+          playbook: playbook.yml
 
         
 
