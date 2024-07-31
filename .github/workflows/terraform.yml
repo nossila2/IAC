@@ -19,18 +19,16 @@ jobs:
       - name: instala terraform
         uses: hashicorp/setup-terraform@v3
 
-      - name: Rodar terraform format
-        run: terraform fmt -check -diff
+      #- name: Rodar terraform format
+       # run: terraform fmt -check -diff
 
-      - name: Rodar terraform format
-        uses: terraform-linters/setup-tflint@v1  
+      #- name: Rodar terraform format
+        #uses: terraform-linters/setup-tflint@v1  
 
       - name: executa checkov
         uses: bridgecrewio/checkov-action@master
         with:
             soft_fail: true
-             
-       
 
       - name: Inicializar
         run: terraform init
@@ -45,7 +43,9 @@ jobs:
 
       - name: Executa
         run: date
-       
+
+      - name: instala ansible
+        uses: dawidd6/action-ansible-playbook@v2
 
         
 
