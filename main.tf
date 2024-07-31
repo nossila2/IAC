@@ -11,8 +11,8 @@ resource "azurerm_resource_group" "student-rg" {
 resource "azurerm_virtual_network" "vnet" {
   name                = "student-vnet"
   address_space       = ["10.0.1.0/24"]
-  location            = azurerm_resource_group.rg.location
-  resource_group_name = azurerm_resource_group.rg.name
+  location            = azurerm_resource_group.student-rg.location
+  resource_group_name = azurerm_resource_group.student-rg.name
 }
 
 # Cria subnets
