@@ -26,4 +26,4 @@ provider "azurerm" {
     client_secret = "yVh8Q~c4fERtMwblG6kT3N0Z2JRfQlGGYSZ2.c.K"
   }
 
-
+}
