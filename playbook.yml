@@ -1,0 +1,14 @@
+---
+  - hosts: all
+    become: yes
+
+    tasks:
+    - name: Atualiza os pacotes dos repositorios
+      apt:
+        name: '*'
+        state: latest
+  
+    - name: Instala pacotes padrao
+      apt:
+        name: nginx
+        state: latest
