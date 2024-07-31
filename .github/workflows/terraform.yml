@@ -13,4 +13,13 @@ jobs:
       - name: Build Project
         run: |
           hostname
+      - name: checkout codigo
+        uses: actions/checkout@v4
+        
+      - name: instala terraform
+        uses: hashicorp/setup-terraform@v3
+
+        
+     
+          
          
