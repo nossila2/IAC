@@ -42,7 +42,7 @@ jobs:
           ARM_TENAD_ID: ${{ secrets.ARM_TENAD_ID }}
 
       - name: Executa
-        run: date
+        run: terraform applyl
 
       - name: Run playbook
         uses: dawidd6/action-ansible-playbook@v2
